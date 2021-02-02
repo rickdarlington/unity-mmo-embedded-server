@@ -1,0 +1,27 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Unix 5.8.0.36
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.9.0.0 - Pro
+[Trace]   PluginFactory         Created plugin 'CompatibilityBichannelListener'.
+[Trace]   HttpHealthCheck       HTTP health check started at 'http://localhost:10666/health'
+[Trace]   BadWordFilter         Loading bad word list.
+[Trace]   BadWordFilter         Bad word list loaded sucessfully!
+[Trace]   DarkRiftServer        Binding listeners to ClientManager as server is externally visible.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping registration.
+[Trace]   DefaultNetworkListener Starting compatibility listener.
+[Info]    DefaultNetworkListener Server mounted, listening on port 4296.
+[Trace]   DefaultNetworkListener Accepted TCP connection from 127.0.0.1:42272.
+[Trace]   DefaultNetworkListener Accepted UDP connection from 127.0.0.1:35781.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:42272|127.0.0.1:35781].
+[Error]   Client                A plugin encountered an error whilst handling the MessageReceived event.
+                                 UnityEngine.UnassignedReferenceException: The variable playerPrefab of ServerManager has not been assigned.
+                                 You probably need to assign the playerPrefab variable of the ServerManager script in the inspector.
+                                   at (wrapper managed-to-native) UnityEngine.Object.Internal_CloneSingleWithParent(UnityEngine.Object,UnityEngine.Transform,bool)
+                                   at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Transform parent, System.Boolean instantiateInWorldSpace) [0x00021] in /home/bokken/buildslave/unity/build/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:255 
+                                   at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Transform parent, System.Boolean worldPositionStays) [0x00001] in /home/bokken/buildslave/unity/build/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:291 
+                                   at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Transform parent) [0x00001] in /home/bokken/buildslave/unity/build/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:286 
+                                   at ServerManager.OnClientLogin (DarkRift.Server.IClient client, NetworkingData+LoginRequestData data) [0x0007c] in /home/rickd/code/mmooo-embedded-server/Assets/Scripts/ServerManager.cs:101 
+                                   at ServerManager.OnMessage (System.Object sender, DarkRift.Server.MessageReceivedEventArgs e) [0x0001c] in /home/rickd/code/mmooo-embedded-server/Assets/Scripts/ServerManager.cs:76 
+                                   at DarkRift.Server.Client+<>c__DisplayClass55_0.<HandleIncomingMessage>g__DoMessageReceived|0 () [0x0002f] in <08a944a1e0824509a415ef14541222b8>:0 
+[Info]    ClientManager         Client [0] disconnected.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping deregistration.

@@ -1,0 +1,14 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Unix 5.8.0.36
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.9.0.0 - Pro
+[Trace]   PluginFactory         Created plugin 'CompatibilityBichannelListener'.
+[Trace]   HttpHealthCheck       HTTP health check started at 'http://localhost:10666/health'
+[Trace]   BadWordFilter         Downloading bad word list from 'https://darkriftnetworking.com/DarkRift2/Resources/BadWords.xml'.
+[Trace]   DarkRiftServer        Binding listeners to ClientManager as server is externally visible.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping registration.
+[Trace]   DefaultNetworkListener Starting compatibility listener.
+[Info]    DefaultNetworkListener Server mounted, listening on port 4296.
+[Trace]   BadWordFilter         Loading bad word list.
+[Trace]   BadWordFilter         Bad word list loaded sucessfully!
+[Trace]   RemoteServerManager   No server registry connector configured, skipping deregistration.
