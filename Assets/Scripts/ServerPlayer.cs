@@ -71,17 +71,23 @@ public class ServerPlayer : MonoBehaviour
 
     private void PlayerReady()
     {
-        NetworkingData.PlayerSpawnData[] players = new NetworkingData.PlayerSpawnData[1];
-        players[0] = new NetworkingData.PlayerSpawnData(Client.ID, Name, transform.position);
-        //players[1] = new NetworkingData.PlayerSpawnData(99, "agent 99", Vector2.Zero);
-
         using (Message m = Message.Create((ushort) NetworkingData.Tags.GameStartData,
-            new NetworkingData.GameStartData(players, Instance.ServerTick)))
+            new NetworkingData.GameStartData(ServerManager.Instance.getAllSpawnInfo(), Instance.ServerTick)))
         {
             Debug.Log("Sending Game Start Data");
 
             Client.SendMessage(m, SendMode.Reliable);
         }
+    }
+
+    public NetworkingData.PlayerSpawnData getSpawnInfo()
+    {
+        return new NetworkingData.PlayerSpawnData(Client.ID, Name, transform.position);
+    }
+    
+    public static NetworkingData.PlayerDespawnData getDespawnData(ushort id)
+    {
+        return new NetworkingData.PlayerDespawnData(id);
     }
 
     public void RecieveInput(NetworkingData.PlayerInputData input)
@@ -116,6 +122,10 @@ public class ServerPlayer : MonoBehaviour
             PlayerStateDataHistory.RemoveAt(0);
         }
 
+        if (Client.ID == 0)
+        {
+            Debug.Log(transform.localPosition);
+        }
         transform.localPosition = currentPlayerStateData.Position;
         return currentPlayerStateData;
     }

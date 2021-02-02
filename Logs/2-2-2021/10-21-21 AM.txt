@@ -1,0 +1,21 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Unix 5.8.0.36
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.9.0.0 - Pro
+[Trace]   PluginFactory         Created plugin 'CompatibilityBichannelListener'.
+[Trace]   HttpHealthCheck       HTTP health check started at 'http://localhost:10666/health'
+[Trace]   BadWordFilter         Loading bad word list.
+[Trace]   BadWordFilter         Bad word list loaded sucessfully!
+[Trace]   DarkRiftServer        Binding listeners to ClientManager as server is externally visible.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping registration.
+[Trace]   DefaultNetworkListener Starting compatibility listener.
+[Info]    DefaultNetworkListener Server mounted, listening on port 4296.
+[Trace]   DefaultNetworkListener Accepted TCP connection from 127.0.0.1:46476.
+[Trace]   DefaultNetworkListener Accepted UDP connection from 127.0.0.1:47059.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:46476|127.0.0.1:47059].
+[Trace]   DefaultNetworkListener Accepted TCP connection from 127.0.0.1:46482.
+[Trace]   DefaultNetworkListener Accepted UDP connection from 127.0.0.1:46711.
+[Info]    ClientManager         New client [1] connected [127.0.0.1:46482|127.0.0.1:46711].
+[Info]    ClientManager         Client [0] disconnected.
+[Info]    ClientManager         Client [1] disconnected.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping deregistration.

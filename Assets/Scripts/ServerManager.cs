@@ -113,6 +113,7 @@ public class ServerManager : MonoBehaviour
         Players.Add(id, p);
         PlayersByName.Add(name, p);
         Debug.Log($"{Players.Count} players online.");
+        SendNewSpawn(p);
     }
 
     public void RemovePlayer(ushort id, String name)
@@ -120,9 +121,45 @@ public class ServerManager : MonoBehaviour
         Players.Remove(id);
         PlayersByName.Remove(name);
         Debug.Log($"{Players.Count} players online.");
+        SendDeSpawn(id);
+    }
+
+    public NetworkingData.PlayerSpawnData[] getAllSpawnInfo()
+    {
+        NetworkingData.PlayerSpawnData[] players = new NetworkingData.PlayerSpawnData[Players.Count];
+        int i = 0;
+        foreach (ServerPlayer player in Players.Values)
+        {
+            players[i] = new NetworkingData.PlayerSpawnData(player.Client.ID, player.Name, player.transform.position);
+            i++;
+        }
+
+        return players;
+    }
+
+    public void SendNewSpawn(ServerPlayer p)
+    {
+        using (Message m = Message.Create((ushort) NetworkingData.Tags.PlayerSpawn, p.getSpawnInfo()))
+        {
+            foreach (KeyValuePair<ushort, ServerPlayer> kv in Players)
+            {
+                kv.Value.Client.SendMessage(m, SendMode.Reliable);
+            }
+        }
     }
     
-    
+    public void SendDeSpawn(ushort id)
+    {
+        using (Message m = Message.Create((ushort) NetworkingData.Tags.PlayerDeSpawn, ServerPlayer.getDespawnData(id)))
+        {
+            foreach (KeyValuePair<ushort, ServerPlayer> kv in Players)
+            {
+                kv.Value.Client.SendMessage(m, SendMode.Reliable);
+            }
+        }
+    }
+
+
     void FixedUpdate()
     {
         ServerTick++;
@@ -135,20 +172,17 @@ public class ServerManager : MonoBehaviour
 
         // Send update message to all players.
         NetworkingData.PlayerStateData[] playerStateDataArray = playerStateData.ToArray();
-        NetworkingData.PlayerSpawnData[] playerSpawnDataArray = playerSpawnData.ToArray();
-        NetworkingData.PlayerDespawnData[] playerDespawnDataArray = playerDespawnData.ToArray();
-        
+
         foreach (KeyValuePair<ushort, ServerPlayer> kv in Players)
         {
 
-            using (Message m = Message.Create((ushort)NetworkingData.Tags.GameUpdate, new NetworkingData.GameUpdateData(kv.Value.InputTick, playerStateDataArray, playerSpawnDataArray, playerDespawnDataArray)))
+            using (Message m = Message.Create((ushort)NetworkingData.Tags.GameUpdate, new NetworkingData.GameUpdateData(kv.Value.InputTick, playerStateDataArray)))
             {
                 kv.Value.Client.SendMessage(m, SendMode.Reliable);
             }
         }
 
         playerStateData.Clear();
-        playerSpawnData.Clear();
-        playerDespawnData.Clear();
+
     }
 }

@@ -1,0 +1,37 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Unix 5.8.0.36
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.9.0.0 - Pro
+[Trace]   PluginFactory         Created plugin 'CompatibilityBichannelListener'.
+[Trace]   HttpHealthCheck       HTTP health check started at 'http://localhost:10666/health'
+[Trace]   BadWordFilter         Loading bad word list.
+[Trace]   BadWordFilter         Bad word list loaded sucessfully!
+[Trace]   DarkRiftServer        Binding listeners to ClientManager as server is externally visible.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping registration.
+[Trace]   DefaultNetworkListener Starting compatibility listener.
+[Info]    DefaultNetworkListener Server mounted, listening on port 4296.
+[Trace]   DefaultNetworkListener Accepted TCP connection from 127.0.0.1:46420.
+[Trace]   DefaultNetworkListener Accepted UDP connection from 127.0.0.1:55707.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:46420|127.0.0.1:55707].
+[Trace]   DefaultNetworkListener Accepted TCP connection from 127.0.0.1:46426.
+[Trace]   DefaultNetworkListener Accepted UDP connection from 127.0.0.1:50613.
+[Info]    ClientManager         New client [1] connected [127.0.0.1:46426|127.0.0.1:50613].
+[Error]   Client                A plugin encountered an error whilst handling the MessageReceived event.
+                                 System.ArgumentNullException: Value cannot be null.
+                                 Parameter name: s
+                                   at System.Text.UnicodeEncoding.GetByteCount (System.String s) [0x00003] in <9577ac7a62ef43179789031239ba8798>:0 
+                                   at DarkRift.DarkRiftWriter.Write (System.String value, System.Text.Encoding encoding) [0x00001] in <8d809a0e7dcb48efa3c4d0a11c8ffe8f>:0 
+                                   at DarkRift.DarkRiftWriter.Write (System.String value) [0x00009] in <8d809a0e7dcb48efa3c4d0a11c8ffe8f>:0 
+                                   at NetworkingData+PlayerSpawnData.Serialize (DarkRift.SerializeEvent e) [0x00013] in /home/rickd/code/mmooo-embedded-server/Assets/Scripts/Shared/NetworkingData.cs:168 
+                                   at DarkRift.DarkRiftWriter.Write[T] (T serializable) [0x00009] in <8d809a0e7dcb48efa3c4d0a11c8ffe8f>:0 
+                                   at DarkRift.DarkRiftWriter.Write[T] (T[] value) [0x0005f] in <8d809a0e7dcb48efa3c4d0a11c8ffe8f>:0 
+                                   at NetworkingData+GameStartData.Serialize (DarkRift.SerializeEvent e) [0x00013] in /home/rickd/code/mmooo-embedded-server/Assets/Scripts/Shared/NetworkingData.cs:246 
+                                   at DarkRift.DarkRiftWriter.Write[T] (T serializable) [0x00009] in <8d809a0e7dcb48efa3c4d0a11c8ffe8f>:0 
+                                   at DarkRift.Message.Create[T] (System.UInt16 tag, T obj) [0x0001f] in <8d809a0e7dcb48efa3c4d0a11c8ffe8f>:0 
+                                   at ServerPlayer.PlayerReady () [0x0007e] in /home/rickd/code/mmooo-embedded-server/Assets/Scripts/ServerPlayer.cs:82 
+                                   at ServerPlayer.OnMessage (System.Object sender, DarkRift.Server.MessageReceivedEventArgs args) [0x00020] in /home/rickd/code/mmooo-embedded-server/Assets/Scripts/ServerPlayer.cs:60 
+                                   at DarkRift.Server.Client+<>c__DisplayClass55_0.<HandleIncomingMessage>g__DoMessageReceived|0 () [0x0002f] in <08a944a1e0824509a415ef14541222b8>:0 
+[Warning] ObjectCacheMonitor    1 Message objects were finalized last period. This is usually a sign that you are not recycling objects correctly.
+[Info]    ClientManager         Client [0] disconnected.
+[Info]    ClientManager         Client [1] disconnected.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping deregistration.
