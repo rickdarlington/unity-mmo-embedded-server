@@ -122,10 +122,10 @@ public class ServerPlayer : MonoBehaviour
             PlayerStateDataHistory.RemoveAt(0);
         }
 
-        if (Client.ID == 0)
+        /*if (Name == "asdf")
         {
             Debug.Log(transform.localPosition);
-        }
+        }*/
         transform.localPosition = currentPlayerStateData.Position;
         return currentPlayerStateData;
     }

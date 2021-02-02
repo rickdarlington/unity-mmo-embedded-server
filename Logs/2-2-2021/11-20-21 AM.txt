@@ -24,3 +24,4 @@
 [Warning] ObjectCacheMonitor    1 AutoRecyclingArray objects were finalized last period. This is usually a sign that you are not recycling objects correctly.
 [Warning] ObjectCacheMonitor    1 MessageBuffer objects were finalized last period. This is usually a sign that you are not recycling objects correctly.
 [Info]    ClientManager         Client [2] disconnected.
+[Trace]   RemoteServerManager   No server registry connector configured, skipping deregistration.

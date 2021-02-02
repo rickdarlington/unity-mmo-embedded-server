@@ -27,6 +27,7 @@
       <Path>Logs</Path>
       <Path>Temp</Path>
       <Path>obj</Path>
+      <Path>server_Data</Path>
     </explicitExcludes>
   </component>
 </project>
