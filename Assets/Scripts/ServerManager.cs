@@ -20,8 +20,6 @@ public class ServerManager : MonoBehaviour
     public Dictionary<string, ServerPlayer> PlayersByName = new Dictionary<string, ServerPlayer>();
     
     private List<NetworkingData.PlayerStateData> playerStateData = new List<NetworkingData.PlayerStateData>(4);
-    private List<NetworkingData.PlayerSpawnData> playerSpawnData = new List<NetworkingData.PlayerSpawnData>(4);
-    private List<NetworkingData.PlayerDespawnData> playerDespawnData = new List<NetworkingData.PlayerDespawnData>(4);
     
     public uint ServerTick = 0;
     
